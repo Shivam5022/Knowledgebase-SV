@@ -69,12 +69,15 @@ int main() {
     Circle circle(5.0);
     Square square(4.0);
 
-    // Static polymorphism: Compile-time resolution
-    circle.draw();  // Calls Circle's draw()
-    square.draw();  // Calls Square's draw()
+    Shape<Circle>* s1 = &circle;
+    Shape<Square>* s2 = &square;
 
-    std::cout << "Circle Area: " << circle.getArea() << std::endl;
-    std::cout << "Square Area: " << square.getArea() << std::endl;
+    // Static polymorphism: Compile-time resolution
+    s1->draw();  // Calls Circle's draw()
+    s2->draw();  // Calls Square's draw()
+
+    std::cout << "Circle Area: " << s1->getArea() << std::endl;
+    std::cout << "Square Area: " << s2->getArea() << std::endl;
 
     return 0;
 }
